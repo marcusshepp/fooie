@@ -1,0 +1,46 @@
+http://ferretfarmer.net/2013/09/05/tutorial-real-time-chat-with-django-twisted-and-websockets-part-2/
+
+lookup:
+- twisted webservers
+- websockets
+
+get public boolean working with permissions
+
+tumblr idea:
+- have many people able to upload any content related to the Hub catagory.
+
+likes/dislikes:
+- each hub post can be liked/disliked.
+- 3 dislikes results in archived post
+- can view all archived posts
+
+short urls:
+- quick access to Hubs
+
+passphrases
+- (secret keys)
+
+being apart of a hub:
+- need to create a way for the UI to add Users to Hubs
+-   >>> from registration.models import User
+	>>> user = User.objects.get(username="pop")
+	>>> user
+	<User: pop>
+	>>> from hubtubapp.models import Hub
+	>>> user.hub_set.add(Hub.objects.all()[0])
+	>>>
+- when viewing a hub that that isnt in user.hub_set.all()
+	- prompt for Hub.secret_key
+	- if form.cleaneddata['secret_key'] == Hub.secret_key:
+		- request.user.hub_set.add(self.object)
+- currently
+	- after correct secretkey user is redirected to hub/#/permission
+
+
+ajax after making new post
+
+lamp for pi server
+
+login/out:
+-	correct redirect/responses
+-	sometimes when logging in the url will be account/logout thus cant submit form to login

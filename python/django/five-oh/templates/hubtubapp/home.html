@@ -1,0 +1,42 @@
+{% extends 'base_site.html' %}
+{% block extra_head %}
+<style>
+	footer {
+		position: fixed; 
+		bottom: 0;
+	}
+	h1{
+		font-family: Gill Sans Extrabold, sans-serif !important;
+	}
+</style>
+{% endblock %}
+{% block content %}
+<h1>Hubs {{ user.firstname }} is a member of:</h1>
+{% for key in object_list %}
+	<ul class="ui-bar ui-bar-a" id="each_hub">
+		<li>
+			<a href="{% url 'hubdetail' key.id %}" class="hub_name_home">{{ key.name }}</a>
+			<p>Description:<br>"{{ key.description }}"</p>
+			<a href="{% url 'hubdelete' key.id %}" class="ui-btn ui-btn-inline">Delete</a>
+		</li>
+		<li class="home_right">
+			<button class="ui-btn ui-btn-inline up-btn"><span class="fa fa-chevron-circle-up"></span></button>
+			<div class="well">
+				<h4>Other members:</h4>
+				{% for i in key.members.all %}
+					{% if i.username != user.username %}
+						<p>{{ i.username }}</p>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</li>
+	</ul>
+{% endfor %}
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+$(".up-btn").click(function(){
+
+});
+</script>
+{% endblock %}

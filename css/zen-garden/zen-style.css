@@ -1,0 +1,199 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+
+/* -- basic elements -- */
+html {
+
+	}
+
+body { 
+	font: 75% georgia, sans-serif;
+	color: white; 
+	background: #81A88B url() no-repeat bottom right; 
+	background-attachment: fixed;
+	}
+
+p { 
+	display: none;
+	margin-top: 0; 
+	text-align: justify;
+	visibility: inherit;
+	font-size: 35px;
+	z-index: 1;
+	}
+
+div > p{
+	font-size: 20px;
+	border: 2px solid white;
+	border-radius: 50px;
+	background-color: rgb(50, 205, 193);
+	margin: 50px 0px 50px 0px;
+	padding: 50px 50px 50px 50px;
+	box-shadow: 3px 3px 3px black;
+
+}
+
+div > ul, nav > ul{
+	position: relative;
+	font-size: 20px;
+	border: 2px solid white;
+	border-radius: 50px;
+	background-color: #8EF5CE;
+	margin: 50px 0px 50px 0px;
+	padding: 50px 0px 50px 0px;
+	box-shadow: 3px 3px 3px black;
+	width: 300px;
+	height: auto;
+	left: 100px;
+
+}
+
+h1:hover, h3:hover{
+	color: white;
+}
+
+a:link { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: white;
+	font-size: 20px;
+	}
+
+a:visited { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #D4CDDC;
+	}
+
+a:hover, a:focus, a:active { 
+	text-decoration: underline; 
+	color: black;
+	zoom: 110%;
+	}
+
+header h1{ 
+	float: left;
+	white-space: nowrap;
+	margin-left: 100px;
+	}
+
+header h2 { 
+	position: fixed;
+	margin: 0px 0px 100px 800px;
+	padding-right: 400px;
+	font-size: 45px;
+	text-align: center;
+	top: 0;
+	z-index: -1;
+	border-bottom: 14px solid black;
+	
+	}
+
+h3{
+	margin: 50px 0px 50px 100px;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+header {
+	padding-top: 20px;
+	height: 87px;
+
+}
+
+footer { 
+	text-align: center; 
+	position: fixed;
+	right: 6px;
+	top: 55px;
+	font-size: 18px;
+	z-index: -1;
+	text-shadow: 5px 5px 5px black;
+	}
+
+footer a:link{ 
+	margin-right: 20px; 
+
+	}
+
+h3, h1 {
+
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height:50px;
+	width:300px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+	box-shadow: 3px 3px 3px black;
+}
+
+/* -- specific classes -- */
+
+.page-wrapper { 
+	background: url() no-repeat top left; 
+	padding: 0 175px 0 110px;  
+	margin: 0; 
+	position: relative;
+}
+
+.clicked {
+	background-color: yellow;
+}
+
+.preamble {
+	clear: right; 
+}
+
+.supporting {	
+	margin-bottom: 40px;
+}
+
+.design-selection{
+	position: absolute;
+	right: 10px !important;
+	bottom: -595px;
+}
+
+.zen-resources{
+	position: absolute;
+	right: 340px !important;
+	bottom: -442px;
+}
+
+.design-archives{
+	position: absolute;
+	right: 670px !important;
+	bottom: -376px;
+}
+

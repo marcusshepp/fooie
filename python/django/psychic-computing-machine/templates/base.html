@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flaskr App ;)</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel='stylesheet' type='text/css' href='{{ url_for('static', filename='style.css') }}'>
+</head>
+<body>
+<div class='container-fluid global'>
+	<div class="row">
+		<div class="col-sm-2 well">
+			
+			<a href="{{ url_for('show_entries') }}"><h1>To Do:</h1></a>
+		</div>	
+		{% for message in get_flashed_messages() %}
+		<div class="col-sm-7">
+			<div class="alert alert-info alert-dismissible div-alert" role="alert">
+				{{ message }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>		
+		</div>	
+		{% endfor %}
+	</div>
+	<div class='login-logout'>
+		{% if not session.logged_in %}
+		<a href='{{ url_for('login') }}'><button class='btn btn-default'>log in</button></a>
+		{% else %}
+		<a href='{{ url_for('logout') }}'><button class='btn btn-default'>log out</button></a>
+		{% endif %}
+	</div>
+	<div>
+	{% block body %}{% endblock %}
+	</div>
+	<div class="push"></div>
+	<!-- http://quotesondesign.com/the-api/ -->
+	<blockquote id="qod-quote" class="well">
+   	... loading ...
+	</blockquote>
+	<script src="http://quotesondesign.com/api/3.0/api-3.0.js" 
+	type="text/javascript" charset="utf-8"></script>
+</div>
+</body>
+</html

@@ -1,0 +1,27 @@
+{% extends 'base_site.html' %}
+
+{% block content %}
+<h1>New Hubs == New Worlds</h1>
+<p>Hubs are a great way to keep in touch with others.</p>
+<p>You can create one here and send the generated URL to a friend.</p>
+<p>Keep in mind, unless you check the option to make your Hub public, your friend will need the "secret key" inorder to fully access the Hub.</p>
+<form action="" method="POST">
+{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" id="validate_hub" value="Create">
+</form>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id_public").click(function(){
+		$("#id_secret_key").toggle();
+		$("label[for='id_secret_key']").toggle()
+	});
+});
+</script>
+{% endblock %}

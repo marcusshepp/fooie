@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	{% block title %}
+        <title>HubTub</title>
+    	{% endblock %}
+		{% load staticfiles %}
+ 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="{% static "signup_second_try/jquery-2.1.1.js" %}"></script>
+		<script src="{% static "signup_second_try/jquery.mobile-1.4.4.js" %}"></script>
+		<link rel="stylesheet" href="{% static "signup_second_try/jquery.mobile-1.4.4.css" %}"></link>
+		<link rel="stylesheet" href="{% static "signup_second_try/global.css" %}"></link>
+		<!-- <script type="text/javascript" src="{{ STATIC_URL }}/js/post_create.js"></script> -->
+		{% block extra_head %}
+    	{% endblock %}
+    	<script type="text/javascript">
+		$(document).ready(function() {
+		// stops ajax load thereby refreshing page
+		$("a,button,form").attr('data-ajax', 'false');
+		// encourages ajax load, hinders refresh page (in case if you want popup or dialogs to work.)
+		$("a[data-rel],a[data-dialog],a[data-transition]").attr('data-ajax', 'true');
+		});
+    	</script>
+    </head>
+
+    <body>
+    	<div class="global-container">
+			{% block header %}
+			<header>
+				<div data-role="header" class="navwrap">
+					<div data-role="navbar">
+						<ul class='nav-ul'>
+							<li><a href="{% url 'home' %}" id="homebtn"><span>Home</span></a></li>
+							<li><a href=""><span>Hubs</span><span class="fa  fa-chevron-circle-down"></span></a>
+								<ul>
+									<li><a href="{% url 'create' %}"><span>Create</span></a></li>
+									<!--<li><a href="#">Delete</a></li>-->
+								</ul>
+							</li>
+							{% if user.is_authenticated %}
+							<li><a href="#"><span>Logged in as {{ user.username }}</span><span class="fa fa-chevron-circle-down"></span></a>
+								<ul>
+									<li><a href="{% url 'register_logout' %}"><span>Log Out</span></a></li>
+								</ul>
+							</li>
+							{% else %}
+							<li><a href="#"><span>Login Here</span><span class="fa  fa-chevron-circle-down"></span></a>
+								<ul>
+									<li><a href="{% url 'register_login' %}"><span>Login</span></a></li>		
+								</ul>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</header>
+			{% endblock header %}
+
+		    <div class="wrapper">
+		        {% block content %}
+		        {% endblock content %}
+		    </div>
+		    <div class="push"></div>
+	        {% block footer %}
+	        {% endblock footer %}
+		</div>
+		{% block js %}
+		
+		{% endblock %}
+    </body>
+</html>

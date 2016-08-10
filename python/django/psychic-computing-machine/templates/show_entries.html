@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block body %}
+	<div class="row">
+		<div class="col-md-3">
+		{% if session.logged_in %}
+			<form action='{{ url_for('add_entry') }}' method='POST' class='add-entry'>
+				<div class='form-group'>	
+					<label for='title'>Title:</label>
+					<input type='text' name='title' class="form-control"/>
+				</div>
+				<div class='form-group'>	
+					<label for="text">Text:</label>
+					<textarea name='text' rows="15" class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="project">Project:</label>
+					<select name="project" class="form-control">
+						<option value="null">-------------</option>
+						<option value="waiting_list">Waiting List</option>
+						<option value="urec">Urec</option>
+						<option value="sodium">Sodium</option>
+						<option value="personal">Personal</option>
+						<option value="meeting">Meeting</option>
+						<option value="central_desk">Central Desk</option>
+						<option value="career_development">Career Development</option>
+						<option value="to_do">To Do</option>
+						<option value="hub_tub">Hub Tub</option>
+						<option value="how_to">How To</option>
+						<option value="jenkins">Jenkins</option>
+					</select>
+				</div>	
+				<button type='submit' class='btn btn-default btn-lg'>Submit</button>
+			</form>
+		{% endif %}
+		</div>
+		<div class="col-md-6">
+			{% if archived %}
+				<a href="{{ url_for('show_entries') }}"><button class="btn btn-default btn-xs archive">See Unarchived Entries</button></a>
+				<ul class='entries'>
+				{% for entry in entries %}
+					<div class="entry panel panel-default">
+						<li class="panel-heading"><h2>{{ entry.title }}</h2></li>
+						<li class="panel-body text"><p>{{ entry.text|safe }}</p></li>
+						<li class="panel-body"><p>Catagory: {{ entry.project }}</p></li>
+						<a href='{{ url_for('archive_undo', entry_id=entry["id"]) }}'><button class="btn btn-default delete">Unarchive</button></a>
+						<a href='{{ url_for('edit_render', entry_id=entry["id"]) }}'><button class="btn btn-default edit">Edit</button></a>
+					</div>	
+				{% else %}
+					<li><em>No Entries.</em></li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<a href="{{ url_for('render_archives') }}"><button class="btn btn-default btn-xs archive">See Archived Entries</button></a>
+				<ul class='entries'>
+				{% for entry in entries %}
+					<div class="entry panel panel-default">
+						<li class="panel-heading"><h2>{{ entry.title }}</h2></li>
+						<li class="panel-body text"><p>{{ entry.text|safe }}</p></li>
+						<li class="panel-body"><p>Catagory: {{ entry.project }}</p></li>
+						<a href='{{ url_for('archive_entry', entry_id=entry["id"]) }}'><button class="btn btn-default delete">Archive</button></a>
+						<a href='{{ url_for('edit_render', entry_id=entry["id"]) }}'><button class="btn btn-default edit">Edit</button></a>
+					</div>	
+				{% else %}
+					<li><em>No Entries.</em></li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+		<div class="col-md-3">
+			{% if filtered %}
+			<h2>Filtered By {{ entries[0]["project"] }}</h2><a id="undo" href="{{ url_for('show_entries') }}">undo</a>
+			{% else %}
+			<h2>Filter By Catagory</h2><a id="undo" href="{{ url_for('show_entries') }}"><small> undo</small></a>
+			{% endif %}
+			<ul class="filter">
+				{% for c in catagories %}
+				<li class="filter-buttons">
+					<a href="{{ url_for('filter_entries', project=c) }}">
+						<button class='btn btn-default'>{{ c }}</button>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	if (document.location.href.indexOf("filter") === -1){
+		var x = $("#undo");
+		x.remove();
+	}
+});
+</script>
+{% endblock %}

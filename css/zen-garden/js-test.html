@@ -1,0 +1,178 @@
+<head>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="jquery.js">
+</head>
+
+
+
+<<body>
+<style>
+.button-blue,.content2{
+	text-indent:0;
+	border:1px solid #dcdcdc;
+	color:black;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height: 1;
+	width:200px;
+	text-decoration:none;
+	text-align:center;
+	background-color: blue;
+	margin: 25px 25px 25px 25px;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	vertical-align: middle;
+	display: table-cell;
+
+}	
+
+.button-red,.content,.link,.link2{
+	text-indent:0;
+	border:1px solid #dcdcdc;
+	color:black;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height: 0;
+	width:200px;
+	text-decoration:none;
+	text-align:center;
+	background-color: red;
+	margin: 25px 25px 25px 25px;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	vertical-align: middle;
+	display: table-cell;
+}	
+
+.content{
+	color: pink;
+	
+}
+
+.content2{
+	color: purple;
+	
+}
+
+p{
+	text-align: center;
+}
+
+</style>
+
+<!-- BEFORE -->
+
+<div class="container">
+	<div class="col-sm-6">
+		<div class="button-blue dropdown">
+			<h1>
+				button
+			</h1>
+		</div>
+				<p class="content">
+					content...
+				</p>
+				<p class="link">
+					links..
+				</p>
+
+	</div>
+
+
+	<div class="col-sm-6">
+		<div class="button-red">
+			<h1>
+				button 2
+			</h1>
+		</div>
+				<p class="content2">
+					content...
+				</p>
+				<p class="link2">
+					links..
+				</p>
+
+	</div>
+</div>
+
+
+<!-- AFTER -->
+<div class="contaier">
+	<div class="dropdown">
+		<a id="dlable" role="button"data-toggle="dropdown" data-target="#" href="./MultiLevelDropDown.html" alt="blank_">
+		Dropdown <span class="caret"></span>
+		</a>		
+			
+			<ul class="dropdown-menu" role="button" aria-labelledby="dLabel">
+					...
+				<li>
+					hi
+				</li>
+			</ul>
+
+
+	</div>
+</div>
+
+
+
+<script src="jquery.js"></script>
+<script>
+
+// Your code goes here.
+	$(function() {
+
+	$(".button-blue h1:first-child, .button-red h1:first-child" ).on('click', function(){
+
+		$('.content,.content2').fadeToggle();
+
+	});
+	$('.content').on('click', function(){
+
+		$('.link').fadeToggle();
+
+	});
+	//$('div h1:first-child').on('click', function(){
+
+		//$('.content2').fadeToggle();
+
+	//});
+	$('.content2').on('click', function(){
+
+		$('.link2').fadeToggle();
+
+	});
+	$('.link').on('click', function(){
+
+		$('.link,.content').fadeToggle();
+
+	});
+	$('.link2').on('click', function(){
+
+		$('.link2,.content2').fadeToggle();
+
+	});
+	//$('.summary,.preamble').fadeIn("slow")
+
+	//});
+	//$('h3').on('click', function(){
+
+	//	var a = $(this).find(':first-child');
+		
+	//	$('p, ul').fadeToggle(1200);
+		
+
+	//});
+
+	
+});
+
+
+</script>
+
+</body>
+</html>

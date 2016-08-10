@@ -1,0 +1,249 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+
+/* basic elements */
+html {
+	background-color: #FFB591;
+}
+body { 
+	margin: 0px auto 0px auto;
+}
+
+header{
+	text-align: center;
+	border-top: 8px solid pink;
+	background-color: #FF5050;
+	position: absolute;
+	top: 100px;
+	bottom: 100px;
+	right: 0px;
+	width: 210px;
+	height: 525px;
+	padding: 0 20px;
+	display: block;
+	z-index: 0;
+}
+
+.sidebar{
+  position: absolute;
+    top: 125%;
+    right: 0%;
+	margin: 25px 25px 25px 25px;
+	padding: 25px 25px 25px 25px;
+	line-height: 25px;
+	background-color: #E8CB7B; 
+}
+
+header:hover{
+	background-color: black;
+	color: white;
+}
+
+
+p { 
+	text-shadow: 0px 1px 4px #4d4d4d;
+	font: 'LeagueGothicRegular';
+	
+
+}
+
+h3, h2, h1 { 
+	text-shadow: -1px -1px 1px #fff, 1px 1px 1px black;
+	color: #CAFFEE;
+	opacity: 0.8;
+	font:'Museo700';
+	
+}
+
+a:link { 
+	text-transformation: none;
+}
+
+a:visited { 
+	
+}
+
+a:hover, a:focus, a:active { 
+	color: white;
+	background-color: green;
+	border-radius: 10px;
+	font-transformation: none;
+}
+
+abbr {
+	
+}
+
+
+/* specific divs */
+
+.summary{
+	background-color: #00FF99;
+	width: 150px;
+	padding: 10px 10px 10px 10px;
+	border-right: 8px solid #FF5050;
+	z-index: -2;
+}
+
+.summary:hover{
+	background-color: black;
+	color: white;
+	width: 150px;
+	padding: 10px 10px 10px 10px;
+	border-right: 8px solid #FF5050;
+	zoom: 125%;
+}
+
+.preamble{
+	background-color: #CCCCFF;
+	padding: 10px 10px 10px 10px;
+	border-bottom: 8px solid #FF5050;
+	z-index: 0;
+}
+
+.preamble:hover{
+	background-color: black;
+	color: white;
+	padding: 10px 10px 10px 10px;
+	border-bottom: 8px solid #FF5050;
+	z-index: 0;
+}
+
+.explanation{
+	background-color: #33CCCC;
+	padding: 10px 10px 10px 10px;
+	border-left: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	width: 300px;
+	left: 200px;
+	-webkit-transform: rotate(30deg);
+    	-moz-transform: rotate(30deg);
+    	-o-transform: rotate(30deg);
+    	-ms-transform: rotate(30deg);
+    	transform: rotate(30deg);
+	
+}
+
+.explanation:hover{
+	background-color: black;
+	color: white;
+	padding: 10px 10px 10px 10px;
+	border-bottom: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	width: 300px;
+	left: 200px;
+	-webkit-transform: rotate(30deg);
+    	-moz-transform: rotate(30deg);
+    	-o-transform: rotate(30deg);
+    	-ms-transform: rotate(30deg);
+    	transform: rotate(30deg);
+}
+
+
+.participation{
+	background-color: #FF9999;
+	padding: 5px 5px 5px 5px;
+	border-right: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	border-radius: 50%;
+	width: 800px;
+	height: 800px; 
+	/* width and height can be anything, as long as they're equal */
+	left: 950px;
+	top: 400px;
+	text-align: center;
+	line-height: 80px;
+}
+
+.participation:hover{
+	background-color: black;
+	color: white;
+	padding: 5px 5px 5px 5px;
+	border-left: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	border-radius: 50%;
+	width: 800px;
+	height: 800px; 
+	/* width and height can be anything, as long as they're equal */
+	left: 950px;
+	top: 400px;
+	text-align: center;
+	line-height: 80px;
+}
+
+.benefits{
+	background-color: #00FF9E;
+	padding: 5px 5px 5px 5px;
+	border-left: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	border-radius: 10%;
+	width: 200px;
+	height: 800px; 
+	/* width and height can be anything, as long as they're equal */
+	left: 700px;
+	top: 600px;
+	text-align: center;
+	line-height: 60px;
+}
+
+.benefits:hover{
+	background-color: black;
+	color: white;
+	padding: 5px 5px 5px 5px;
+	border-left: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	border-radius: 10%;
+	width: 200px;
+	height: 800px; 
+	left: 700px;
+	top: 600px;
+	text-align: center;
+	line-height: 60px;
+}
+
+.requirements{
+	background-color: #75CDFF;
+	padding: 5px 5px 5px 5px;
+	border-right: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	border-radius: 0%;
+	width: 600px;
+	height: auto; 
+	/* width and height can be anything, as long as they're equal */
+	left: 50px;
+	top: 1000px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.requirements:hover{
+	background-color: black;
+	color: white;
+	padding: 5px 5px 5px 5px;
+	border-left: 8px solid #FF5050;
+	position: absolute;
+	z-index: 0;
+	border-radius: 0%;
+	width: 600px;
+	height: auto; 
+	/* width and height can be anything, as long as they're equal */
+	left: 50px;
+	top: 1000px;
+	text-align: center;
+	line-height: 30px;
+}
+

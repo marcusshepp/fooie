@@ -1,0 +1,75 @@
+blockquote{
+	position: relative;
+	bottom: 70px;
+	font-size: 15px;
+	width: 35%;
+	height: 100px;
+}
+
+button{
+	color: blue;
+}
+
+a{
+	color: blue;
+}
+
+input{
+	/*color: blue;*/
+}
+
+ul{
+	list-style: none;
+}
+
+.global{
+	background-image: url("geometry2.png");
+	height: 100%;
+}
+
+.login-logout{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 15px 15px;
+}
+
+.add-entry{
+	margin: 25px 0 0 75px;
+}
+
+.delete, .edit{
+	margin: 15px 0 15px 15px;
+}
+
+.entries{
+	max-width: 100em;
+    width: 100%;
+    height: 600px;
+    overflow: scroll;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+.text{
+	word-wrap: break-word;
+	max-width: 50em;
+	max-width: 50ch;
+}
+
+.filter-buttons{
+	margin: 15px 15px 15px 0;
+}
+
+.editing-text-for{
+	margin: 0 0 0 75px;
+}
+
+.push{
+	height: 80px;
+}
+
+.archive{
+	position: relative;
+	float: right;
+}

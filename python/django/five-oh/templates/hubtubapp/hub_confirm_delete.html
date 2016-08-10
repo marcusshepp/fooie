@@ -1,0 +1,10 @@
+{% extends 'base_site.html' %}
+
+{% block content %}
+<p>Are you sure you want to delete </p>{{ object.name }}
+<form method="POST">
+	{% csrf_token %}
+	<input type="submit" value="I want to delete this Hub!"><br>
+	<a href="{% url 'home' %}"><button>No take me home.</button></a>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base_site.html' %}
+
+{% block content %}
+{{ form.non_field_errors }}
+{% if message %}
+{{ message }}
+{% endif %}
+<form method="post" action="">{% csrf_token %}
+	<table>
+		<tr>
+			<td>{{ form.username.label_tag }}</td>
+			<td>{{ form.username }}</td>
+		</tr>
+		<tr>
+			<td>{{ form.password.label_tag }}</td>
+			<td>{{ form.password }}</td>
+		</tr>
+	</table>
+	<input type="submit" value="login" class="login"/>
+</form>
+
+<h3>If you don't have an account create one <a href="{% url 'register' %}">here</a>.</h3>
+{% endblock %}

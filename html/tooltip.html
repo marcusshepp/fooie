@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      [tooltip]:before{
+        position: absolute;
+        content: attr(tooltip);
+        opacity: 0;
+        
+      }
+      [tooltip]:hover:before{
+        opacity: 1;
+      }
+      [tooltip]{
+        color: red;
+        margin-top: 25px;
+      }
+      [tooltip]:not([tooltip-persistent]):before {
+        pointer-events: none;
+      }
+      .my_class{
+        margin-top: 200px;
+        margin-left: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="" tooltip="foo bar pop">
+      dont hover me
+    </div> -->
+    <div class="my_class" tooltip="foo bar pop">
+      <img src="http://placekitten.com/200/200" class="img" tooltip="foo bar pop" />  
+    </div>
+    
+  </body>
+</html>

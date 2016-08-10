@@ -1,0 +1,15 @@
+<html>
+<body>
+<script>
+var keys = [0, 1, 2, 3, 4];
+var values = ["first", "second", "third", "fourth", "fifth"];
+var map = new Map();
+var i = 0;
+keys.forEach(function(key){
+  map.set(key, values[i]);
+  i++;
+});
+console.log(map);
+</script>
+</body>
+</html>

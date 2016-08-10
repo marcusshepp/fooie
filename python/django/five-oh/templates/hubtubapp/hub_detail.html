@@ -1,0 +1,64 @@
+{% extends 'base_site.html' %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+	{% if welcome %}
+	{{ welcome }}
+	{% else %}
+	<h2>Welcome back! <strong>{{ object.name }}</strong> is lonely without you!</h2>
+	{% endif %}
+	<div class="ui-bar ui-bar-a ui-corner-all">
+		<p>Admin: {{ object.admin }}</p>
+		<p>Created On: {{ object.date_created }}</p>
+		<p>Description: {{ object.description }}</p>	
+	</div>
+	<br />
+	<div class="posts-container">	
+		{% if not posts %}
+		<p>There are no posts yet. Create one below!</p>
+		{% else %}
+			{% for post in posts %}
+				<div class="post-container">
+					<div class="message">{{ post.message }}</div>
+					<div class="poster">- {{ post.created_by }}</div>
+					<div class="flex">
+						<form class="comment-on-post">
+							<input type="text">
+						</form>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+		<form action="" method="POST" id="post_form">{% csrf_token %}
+			{{ form.as_p }}
+			<button onclick="create_post()">Send</button>
+		</form>
+	</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+function create_post(){
+	console.log("create_post");
+	console.log($('#post-text').val());
+	$.ajax({
+		url: '/hub/create_post',
+		type: 'POST',
+		data: {message: $('#post-text').val()}
+		success: function(json){
+			$('#post-text').val('');
+			console.log(json);
+			console.log("success");
+		},
+		error : function(xhr, errmsg, err){
+        $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+            " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+    	},
+	});
+};
+</script>
+{% endblock %}
