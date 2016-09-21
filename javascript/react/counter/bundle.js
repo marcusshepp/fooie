@@ -64,27 +64,110 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = function (_React$Component) {
-		_inherits(App, _React$Component);
+	var counter = 0;
 
-		function App() {
-			_classCallCheck(this, App);
+	var Subtract = function (_React$Component) {
+	    _inherits(Subtract, _React$Component);
 
-			return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-		}
+	    function Subtract() {
+	        _classCallCheck(this, Subtract);
 
-		_createClass(App, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'h1',
-					null,
-					' foo '
-				);
-			}
-		}]);
+	        return _possibleConstructorReturn(this, (Subtract.__proto__ || Object.getPrototypeOf(Subtract)).apply(this, arguments));
+	    }
 
-		return App;
+	    _createClass(Subtract, [{
+	        key: 'click_subtract',
+	        value: function click_subtract() {
+	            console.log("clicked");
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'button',
+	                { onClick: this.click_subtract.bind(this) },
+	                '--'
+	            );
+	        }
+	    }]);
+
+	    return Subtract;
+	}(_react2.default.Component);
+
+	var Count = function (_React$Component2) {
+	    _inherits(Count, _React$Component2);
+
+	    function Count() {
+	        _classCallCheck(this, Count);
+
+	        return _possibleConstructorReturn(this, (Count.__proto__ || Object.getPrototypeOf(Count)).apply(this, arguments));
+	    }
+
+	    _createClass(Count, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'p',
+	                null,
+	                '123'
+	            );
+	        }
+	    }]);
+
+	    return Count;
+	}(_react2.default.Component);
+
+	var Add = function (_React$Component3) {
+	    _inherits(Add, _React$Component3);
+
+	    function Add() {
+	        _classCallCheck(this, Add);
+
+	        return _possibleConstructorReturn(this, (Add.__proto__ || Object.getPrototypeOf(Add)).apply(this, arguments));
+	    }
+
+	    _createClass(Add, [{
+	        key: 'click_add',
+	        value: function click_add() {
+	            console.log("adding");
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'button',
+	                { onClick: this.click_add.bind(this) },
+	                '++'
+	            );
+	        }
+	    }]);
+
+	    return Add;
+	}(_react2.default.Component);
+
+	var App = function (_React$Component4) {
+	    _inherits(App, _React$Component4);
+
+	    function App() {
+	        _classCallCheck(this, App);
+
+	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    }
+
+	    _createClass(App, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(Add, null),
+	                _react2.default.createElement(Count, null),
+	                _react2.default.createElement(Subtract, null)
+	            );
+	        }
+	    }]);
+
+	    return App;
 	}(_react2.default.Component);
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
