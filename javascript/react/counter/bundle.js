@@ -76,16 +76,11 @@
 	    }
 
 	    _createClass(Subtract, [{
-	        key: 'click_subtract',
-	        value: function click_subtract() {
-	            console.log("clicked");
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'button',
-	                { onClick: this.click_subtract.bind(this) },
+	                { onClick: this.props.click_subtract.bind(this) },
 	                '--'
 	            );
 	        }
@@ -109,7 +104,7 @@
 	            return _react2.default.createElement(
 	                'p',
 	                null,
-	                '123'
+	                this.props.count
 	            );
 	        }
 	    }]);
@@ -127,16 +122,11 @@
 	    }
 
 	    _createClass(Add, [{
-	        key: 'click_add',
-	        value: function click_add() {
-	            console.log("adding");
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'button',
-	                { onClick: this.click_add.bind(this) },
+	                { onClick: this.props.click_add.bind(this) },
 	                '++'
 	            );
 	        }
@@ -148,21 +138,35 @@
 	var App = function (_React$Component4) {
 	    _inherits(App, _React$Component4);
 
-	    function App() {
+	    function App(props) {
 	        _classCallCheck(this, App);
 
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	        var _this4 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+	        _this4.state = { counter: counter };
+	        return _this4;
 	    }
 
 	    _createClass(App, [{
+	        key: 'click_subtract',
+	        value: function click_subtract() {
+	            this.setState({ counter: counter + 1 });
+	            console.log(this.state.counter);
+	        }
+	    }, {
+	        key: 'click_add',
+	        value: function click_add() {
+	            console.log("adding");
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(Add, null),
-	                _react2.default.createElement(Count, null),
-	                _react2.default.createElement(Subtract, null)
+	                _react2.default.createElement(Add, { click_add: this.click_add }),
+	                _react2.default.createElement(Count, { count: this.state.counter }),
+	                _react2.default.createElement(Subtract, { click_subtract: this.click_subtract })
 	            );
 	        }
 	    }]);
