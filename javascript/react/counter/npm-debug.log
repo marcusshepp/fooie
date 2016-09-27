@@ -1,0 +1,37 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'server' ]
+2 info using npm@2.12.1
+3 info using node@v0.12.7
+4 verbose node symlink /usr/local/bin/node
+5 verbose run-script [ 'preserver', 'server', 'postserver' ]
+6 info preserver counter@1.0.0
+7 info server counter@1.0.0
+8 verbose unsafe-perm in lifecycle true
+9 info counter@1.0.0 Failed to exec server script
+10 verbose stack Error: counter@1.0.0 server: `./node_modules/bin/webpack-dev-server --inline --hot`
+10 verbose stack spawn ENOENT
+10 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:17:16)
+10 verbose stack     at ChildProcess.emit (events.js:110:17)
+10 verbose stack     at maybeClose (child_process.js:1015:16)
+10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+11 verbose pkgid counter@1.0.0
+12 verbose cwd /Users/sheph2mj/projects/fooie/javascript/react/counter
+13 error Darwin 15.6.0
+14 error argv "node" "/usr/local/bin/npm" "run" "server"
+15 error node v0.12.7
+16 error npm  v2.12.1
+17 error file sh
+18 error code ELIFECYCLE
+19 error errno ENOENT
+20 error syscall spawn
+21 error counter@1.0.0 server: `./node_modules/bin/webpack-dev-server --inline --hot`
+21 error spawn ENOENT
+22 error Failed at the counter@1.0.0 server script './node_modules/bin/webpack-dev-server --inline --hot'.
+22 error This is most likely a problem with the counter package,
+22 error not with npm itself.
+22 error Tell the author that this fails on your system:
+22 error     ./node_modules/bin/webpack-dev-server --inline --hot
+22 error You can get their info via:
+22 error     npm owner ls counter
+22 error There is likely additional logging output above.
+23 verbose exit [ 1, true ]

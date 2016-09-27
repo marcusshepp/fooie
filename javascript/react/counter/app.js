@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-var counter = 0;
+// var counter = 0;
 
 
 class Subtract extends React.Component {
+    handle_click(){
+        this.props.subtract_from_count();
+    }
     render(){
         return (
-            <button onClick={ this.props.click_subtract.bind(this) }>--</button>
+            <button onClick={ this.handle_click.bind(this) }>--</button>
         );
     }
 }
@@ -16,7 +19,7 @@ class Subtract extends React.Component {
 
 class Count extends React.Component {
     render(){
-        return (<p>{this.props.count}</p>);
+        return (<p>{ this.props.count }</p>);
     }
 }
 
@@ -24,7 +27,7 @@ class Count extends React.Component {
 class Add extends React.Component {
     render(){
         return (
-            <button onClick={ this.props.click_add.bind(this) }>++</button>
+            <button>++</button>
         );
     }
 }
@@ -32,14 +35,14 @@ class Add extends React.Component {
 
 class App extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = { counter: counter };
+    constructor(){
+        super() 
+        this.state = {count: 0}
     }
+
     click_subtract(){
-        var new_count = this.state.counter - 1;
-        this.setState({ counter: new_count });
-        console.log(this.state.counter);
+        var new_count = this.state.count - 1;
+        this.setState({count: new_count}); 
     }
     click_add(){
         console.log("adding");
@@ -47,9 +50,10 @@ class App extends React.Component {
 	render() {
 		return (
             <div>
-                <Add click_add={ this.click_add }/>
-                <Count count={ this.state.counter }/>
-                <Subtract click_subtract={ this.click_subtract } />
+                <Add click_add={ this.click_add.bind(this) }/>
+                { this.state.count }
+                <Subtract
+                    subtract_from_count={ this.click_subtract.bind(this) } />
             </div>
         );
 	}
