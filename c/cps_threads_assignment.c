@@ -4,6 +4,11 @@ Multithreaded simple stats on a given list of integers.
 usage:
 gcc -pthread -o <this_script> <this_script>.c
 ./<this_script>
+
+Marcus Shepherd (sheph2mj)
+CPS 470 Introduction to Operating Systems
+Activity 3
+9/27/16
 */
 
 #include <stdio.h>
@@ -12,32 +17,52 @@ gcc -pthread -o <this_script> <this_script>.c
 
 
 struct thread_args {
-    int nums[];
-    int length;
+    float nums[100];
+    float length;
 };
 
 
 void *Average(void* arg){
-    struct thread_args my_struct;
-    
-	int *nums = (int*)arg;
-	int sum = 0;
-    
-    for(int i = 0; i < 4; i++){
-		printf("%i\n", nums[i]);
-	}
+	/*
+	Takes in a pointer. Is passed a pointer to a struct.
+	Finds the average using the float array and the length
+	of the array from the struct.
+	*/
+    struct thread_args *my_struct = (struct thread_args*)arg;
+	
+	int i;
+   	float sum, average;
+    for(i = 0; i < (*my_struct).length; i++)
+		sum += (*my_struct).nums[i];
+
+	average = sum/(*my_struct).length;
+	printf("Average: %.2f\n", average);
 	pthread_exit(NULL);
 }
 
 
 void *Minimum(void *arg){
-    printf("minimum\n");
+	struct thread_args *my_struct = (struct thread_args*)arg;
+	float minimum = (*my_struct).nums[0];
+	for(int i = 0; i < (*my_struct).length; i++){
+		if((*my_struct).nums[i] < minimum){
+			minimum = (*my_struct).nums[i];
+		}
+	}
+	printf("Minimum: %.2f\n", minimum);
 	pthread_exit(NULL);
 }
 
 
 void *Maximum(void *arg){
-    printf("maximum\n");
+	struct thread_args *my_struct = (struct thread_args*)arg;
+	float maximum = (*my_struct).nums[0];
+	for(int i = 0; i < (*my_struct).length; i++){
+		if((*my_struct).nums[i] > maximum){
+			maximum = (*my_struct).nums[i];
+		}
+	}
+	printf("Maximum: %.2f\n", maximum);
 	pthread_exit(NULL);
 }
 
@@ -45,38 +70,36 @@ void *Maximum(void *arg){
 int main(void){
 
 	// Read in numbers to be operated on.
-    int number_of_numbers, i;
-    int num[];
+	float number_of_numbers;
+    int num[100];
     printf("Please, enter how many numbers you would like to submit: ");
-    scanf("%d", &number_of_numbers);
-    printf("%d\n", number_of_numbers);
+    scanf("%f", &number_of_numbers);
     
-    for(i=0; i<number_of_numbers; i++){
+    struct thread_args intake;
+    intake.length = number_of_numbers;
+	
+	for(int i = 0; i<number_of_numbers; i++){
         // for i in range number of numbers
         // ask for another number
         // assign numbers[i] to that number.
         printf("Enter integer %d: ", i+1);
-        scanf("%d", &num[i]);
+        scanf("%f", &intake.nums[i]);
     } 
     
-    struct thread_args intake;
-    intake.nums = num;    
-    intake.length = number_of_numbers;
-
 	// Split operations into three seperate threads respectively.
 	// average
     pthread_t average_thread;
-    pthread_create(&average_thread, NULL, Average, &num);
+    pthread_create(&average_thread, NULL, Average, &intake);
     pthread_join(average_thread, NULL);
 
 	// minimum
 	pthread_t minimum_thread;
-	pthread_create(&minimum_thread, NULL, Minimum, num);
+	pthread_create(&minimum_thread, NULL, Minimum, &intake);
 	pthread_join(minimum_thread, NULL);
 
 	// maximum
 	pthread_t maximum_thread;
-	pthread_create(&maximum_thread, NULL, Maximum, num);
+	pthread_create(&maximum_thread, NULL, Maximum, &intake);
 	pthread_join(maximum_thread, NULL);
 
 	pthread_exit(NULL);
