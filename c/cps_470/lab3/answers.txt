@@ -1,0 +1,10 @@
+problem 1:
+- program 1
+- program 3
+
+problem 2:
+a. No
+b. Yes
+c. No
+d. Yes
+e. Yes

@@ -7,7 +7,8 @@ import ItemList from './components/item-list';
 
 var items = [
 	{
-		date_created: 'today',
+		id: 1,
+		date_created: '1/2/16',
 		name: 'foo',
 		where_from: 'there',
 		price: 1.99,
@@ -15,7 +16,8 @@ var items = [
 		category: 1
 	},
 	{
-		date_created: 'yesterday',
+		id: 2,
+		date_created: '5/06/16',
 		name: 'bar',
 		where_from: 'here',
 		price: 20.04,
@@ -26,11 +28,17 @@ var items = [
 
 
 class Dollars extends React.Component {
+	constructor(){
+		super()
+		this.state = {
+			items,
+		}
+	}
 	render(){
 		return (
 			<div>
 				<ItemCreate />
-				<ItemList />
+				<ItemList items={ this.state.items }/>
 			</div>
 		);
 	}

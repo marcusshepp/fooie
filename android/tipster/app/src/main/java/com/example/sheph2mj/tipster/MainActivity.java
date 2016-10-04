@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
             Log.d("TEXT WATCH", "after");
             bill_amount_value_double = Double.parseDouble(s.toString());
             bill_amount_value_string = s.toString();
-            set_bill_display(bill_amount_value_string);
+            set_bill_display("Bill: " + bill_amount_value_string);
         }
 
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
