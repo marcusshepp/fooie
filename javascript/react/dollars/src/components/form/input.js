@@ -6,9 +6,10 @@ export default class Input extends React.Component {
 	render(){
 		return(
 			<div>
-				<Label
-					text={ this.props.label_text }
-					/>
+				{ this.props.include_label && 
+					<Label
+						text={ this.props.label_text }
+						/> }
 				<input 
 					type={ this.props.type } 
 					name={ this.props.name } 

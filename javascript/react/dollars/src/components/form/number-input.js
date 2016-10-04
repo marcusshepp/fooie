@@ -8,6 +8,7 @@ export default class NumberInput extends React.Component {
 		return(
 			<Input 
 				label_text={ this.props.label_text }
+				include_label={ true }
 				type="number"
 				step={ this.props.decimal ? "0.01" : "" } />
 		);

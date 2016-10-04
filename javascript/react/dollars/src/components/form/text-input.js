@@ -8,6 +8,7 @@ export default class TextInput extends React.Component {
 			<Input 
 				name={ this.props.name }
 				label_text={ this.props.label_text }
+				include_label={ true }
 				type='text' />
 		);
 	}
