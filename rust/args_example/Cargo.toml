@@ -1,0 +1,6 @@
+[package]
+name = "raggedness_score"
+version = "0.1.0"
+authors = ["sheph2mj <sheph2mj@cmich.edu>"]
+
+[dependencies]
