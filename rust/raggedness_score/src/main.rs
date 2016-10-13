@@ -25,8 +25,7 @@ fn max_length(in_vec: &Vec<String>) -> i32{
     max as i32
 }
 
-fn main(){
-    // intro(); 
+fn collect_input() -> Vec<String> {
     let stdin = io::stdin();
     let mut in_arr: Vec<String> = Vec::new();
     for line in stdin.lock().lines() {
@@ -34,15 +33,27 @@ fn main(){
         in_arr.push(foo.to_string());
         if foo == "-1"{ break; }
     }
+    in_arr
+}
+
+fn main(){
+    // Input from console
+    let mut in_arr = collect_input();
+    // Max line length from Vector of input
     let max_line_length = max_length(&in_arr);
+    // Final Score.
     let mut score: i32 = 0;
     let vector_size: i32 = in_arr.len() as i32;
+    // remove last two items from vector
     in_arr.truncate((vector_size - 2) as usize);
     for item in in_arr{
         let mut line_score: i32;
         let line_len: i32 = item.len() as i32;
+        // Any line less than the max length line
         if line_len < max_line_length{
+            // line score = (n - m)
             line_score = max_line_length - line_len;
+            // line score = line score ^ 2
             line_score = line_score.pow(2);
             if item.to_string() != "-1"{
                 score += line_score;
