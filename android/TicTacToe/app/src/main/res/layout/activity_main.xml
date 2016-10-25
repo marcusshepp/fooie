@@ -12,7 +12,6 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true">
 
         <Button
@@ -71,31 +70,6 @@
             android:layout_row="2"
             android:layout_column="2" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="102dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/game_status_text"
-            android:layout_row="13"
-            android:layout_column="1" />
-
-        <Button
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:text="New Game"
-            android:id="@+id/new_game_btn"
-            android:layout_row="14"
-            android:layout_column="1" />
-
-        <Spinner
-            android:layout_width="115dp"
-            android:layout_height="50dp"
-            android:id="@+id/player_mark_spinner"
-            android:layout_row="14"
-            android:layout_column="2"
-            android:spinnerMode="dropdown" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="74dp"
@@ -103,5 +77,23 @@
             android:layout_row="0"
             android:layout_column="2" />
 
+        <TextView
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/game_status_text"
+            android:layout_row="17"
+            android:layout_column="0" />
+
+        <Button
+            android:layout_width="84dp"
+            android:layout_height="76dp"
+            android:text="New Game"
+            android:id="@+id/new_game_btn"
+            android:layout_row="18"
+            android:layout_column="0" />
+
     </GridLayout>
+
 </RelativeLayout>

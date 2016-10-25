@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private static Button bot_mid_btn;
     private static Button bot_right_btn;
 
-    private static Spinner player_mark_spinner;
     private static Button new_game_btn;
 
     private static TextView game_status_text;
@@ -50,133 +49,158 @@ public class MainActivity extends AppCompatActivity {
         bot_mid_btn = (Button) findViewById(R.id.bot_mid_btn);
         bot_right_btn = (Button) findViewById(R.id.bot_right_btn);
 
-        player_mark_spinner = (Spinner) findViewById(R.id.player_mark_spinner);
 
         game_status_text = (TextView) findViewById(R.id.game_status_text);
-
+        game_status_text.setText("");
         new_game_btn = (Button) findViewById(R.id.new_game_btn);
 
         top_left_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "top left btn");
-                if (player_turn){
-                    top_left_btn.setText(player_mark);
-                } else {
-                    top_left_btn.setText(other_player_mark);
+                if(top_left_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            top_left_btn.setText(player_mark);
+                        } else {
+                            top_left_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         top_mid_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "top mid btn");
-                if (player_turn){
-                    top_mid_btn.setText(player_mark);
-                } else {
-                    top_mid_btn.setText(other_player_mark);
+                if(top_mid_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            top_mid_btn.setText(player_mark);
+                        } else {
+                            top_mid_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         top_right_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "top right btn");
-                if (player_turn){
-                    top_right_btn.setText(player_mark);
-                } else {
-                    top_right_btn.setText(other_player_mark);
+                if(top_right_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            top_right_btn.setText(player_mark);
+                        } else {
+                            top_right_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         mid_left_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "mid left btn");
-                if (player_turn){
-                    mid_left_btn.setText(player_mark);
-                } else {
-                    mid_left_btn.setText(other_player_mark);
+                if(mid_left_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            mid_left_btn.setText(player_mark);
+                        } else {
+                            mid_left_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         mid_mid_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "mid mid btn");
-                if (player_turn){
-                    mid_mid_btn.setText(player_mark);
-                } else {
-                    mid_mid_btn.setText(other_player_mark);
+                if(mid_mid_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            mid_mid_btn.setText(player_mark);
+                        } else {
+                            mid_mid_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         mid_right_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "mid right btn");
-                if (player_turn){
-                    mid_right_btn.setText(player_mark);
-                } else {
-                    mid_right_btn.setText(other_player_mark);
+                if(mid_right_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            mid_right_btn.setText(player_mark);
+                        } else {
+                            mid_right_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         bot_left_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "bot left btn");
-                if (player_turn){
-                    bot_left_btn.setText(player_mark);
-                } else {
-                    bot_left_btn.setText(other_player_mark);
+                if(bot_left_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            bot_left_btn.setText(player_mark);
+                        } else {
+                            bot_left_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         bot_mid_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Log.d("CLICKED", "bot mid btn");
-                if (player_turn){
-                    bot_mid_btn.setText(player_mark);
-                } else {
-                    bot_mid_btn.setText(other_player_mark);
+                if(bot_mid_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            bot_mid_btn.setText(player_mark);
+                        } else {
+                            bot_mid_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         bot_right_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "bot right btn");
-                if (player_turn){
-                    bot_right_btn.setText(player_mark);
-                } else {
-                    bot_right_btn.setText(other_player_mark);
+                if(bot_right_btn.getText().toString().isEmpty()){
+                    if(!endgame){
+                        if (player_turn){
+                            bot_right_btn.setText(player_mark);
+                        } else {
+                            bot_right_btn.setText(other_player_mark);
+                        }
+                        change_turn();
+                    }
                 }
-                change_turn();
             }
         });
 
         new_game_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.d("CLICKED", "new game btn");
                 top_left_btn.setText("");
                 top_mid_btn.setText("");
                 top_right_btn.setText("");
@@ -186,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 bot_left_btn.setText("");
                 bot_mid_btn.setText("");
                 bot_right_btn.setText("");
+                endgame = false;
                 set_display("New Game");
             }
         });
@@ -199,6 +224,48 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return boo;
+    }
+
+    public static String[] all_btn_texts(){
+        String a1 = top_left_btn.getText().toString();
+        String a2 = top_mid_btn.getText().toString();
+        String a3 = top_right_btn.getText().toString();
+        String b1 = mid_left_btn.getText().toString();
+        String b2 = mid_mid_btn.getText().toString();
+        String b3 = mid_right_btn.getText().toString();
+        String c1 = bot_left_btn.getText().toString();
+        String c2 = bot_mid_btn.getText().toString();
+        String c3 = bot_right_btn.getText().toString();
+        String[] texts = {
+                a1,
+                a2,
+                a3,
+                b1,
+                b2,
+                b3,
+                c1,
+                c2,
+                c3
+        };
+        return texts;
+    }
+
+    public static boolean tie_game(){
+        String[] texts = all_btn_texts();
+        int empties = 9;
+        boolean is_tie = false;
+        for(int i = 0; i < texts.length; i++){
+            if(texts[i] == "X" || texts[i] == "O"){
+                empties -= 1;
+            }
+        }
+        if (empties < 2 ){
+            if (!endgame){
+                is_tie = true;
+                endgame = true;
+            }
+        }
+        return is_tie;
     }
 
     public static void check_for_endgame(){
@@ -247,9 +314,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static void change_turn(){
         if (player_turn){
-            set_display("Current Mover: O");
-        } else { set_display("Current Mover: X"); }
+            set_display("Turn: O");
+        } else { set_display("Turn: X"); }
         check_for_endgame();
+        if (tie_game()){
+            set_display("Tie\nGame!");
+        }
         if (endgame){
             set_display(String.format("winner is: %s", winner));
         }
