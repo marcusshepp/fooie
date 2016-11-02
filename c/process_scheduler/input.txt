@@ -1,6 +1,0 @@
-pid	arrival_time burst priority
-1 2 87 3
-2 7 15 4
-3 0 46 1
-4 15 21 5
-5 13 18 2
