@@ -82,19 +82,12 @@ int get_data_from_input_file(){
 
     for(int i = 0; i < rows; i++){
         fgets(buffer, line_limit, file);
-        printf("buffer %d: %s\n", i, buffer);
         int a, b, c;
         sscanf(buffer, "%d %d %d", &a, &b, &c);
         *(request_matrix + i * columns + 0) = a;
         *(request_matrix + i * columns + 1) = b;
         *(request_matrix + i * columns + 2) = c;
     }
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
-            printf("%d ", *(request_matrix + i * columns + j));
-        }
-    }
-    printf("requ mat[2][0]: %d\n", *(request_matrix + 2 * columns + 0));
     return 0;
 }
 
@@ -103,5 +96,8 @@ int get_data_from_input_file(){
 int main(){
     get_data_from_input_file();
     free(allocations_matrix);
+    free(maximum_matrix);
+    free(resource_availability);
+    free(request_matrix);
     return 0;
 }
