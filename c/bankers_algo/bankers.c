@@ -26,19 +26,13 @@ int get_data_from_input_file(){
 
     // num processes
     fgets(buffer, line_limit, file); 
-    printf("first buffer: %s\n", buffer);
     fgets(buffer, line_limit, file);
-    printf("next buffer: %s\n", buffer);
     number_of_processes = atoi(&buffer[0]);
-    printf("num proc: %d\n", number_of_processes);
 
     // num resources
     fgets(buffer, line_limit, file); 
-    printf("first buffer: %s\n", buffer);
     fgets(buffer, line_limit, file);
-    printf("next buffer: %s\n", buffer);
     number_of_resources = atoi(&buffer[0]);
-    printf("num resc: %d\n", number_of_resources);
 
 
     int rows = number_of_processes;
@@ -74,7 +68,12 @@ int get_data_from_input_file(){
     resource_availability = malloc(sizeof(int) * number_of_resources); 
     fgets(buffer, line_limit, file);
     fgets(buffer, line_limit, file);
-    sscanf(buffer, "%d %d %d", &resource_availability[0], &resource_availability[1], &resource_availability[2]);
+    sscanf(
+        buffer, 
+        "%d %d %d", 
+        &resource_availability[0], 
+        &resource_availability[1], 
+        &resource_availability[2]);
 
     // maximum matrix
     request_matrix = (int *)malloc(rows * columns * sizeof(int));
@@ -91,10 +90,46 @@ int get_data_from_input_file(){
     return 0;
 }
 
+void process_each_request(){
+    /* print each request, print available resources
+     * create temp available
+     * subtract request from temp available
+     * for value in temp available
+     *  if value >= 0
+     *      print allowed message
+     *      allow request to take from actual available array
+     *      add to allocation
+     *  else
+     *      print denied request message
+     *
+     * questions:
+     *  what to do after denial of request.
+     *  could keep a var that represents how many requests have been 
+     *  granted and break once var == number of resources
+     *
+     *
+     * */
+    int i, j;
+    for(i = 0; i < number_of_processes; i++){
+        for(j = 0; j < number_of_resources; j++){
+            printf("Process %d Requesting %d of Resource %d\n", 
+                    (i + 1), 
+                    *(request_matrix + i * number_of_resources + j), 
+                    (j + 1));
+           
+
+        }
+        printf("Resources and their respective availability:\n");
+        for(int x = 0; x < number_of_resources; x++)
+            printf("%d: %d\n", 
+                (x + 1), resource_availability[x]);
+    }
+}
 
 
 int main(){
     get_data_from_input_file();
+    process_each_request();
     free(allocations_matrix);
     free(maximum_matrix);
     free(resource_availability);
