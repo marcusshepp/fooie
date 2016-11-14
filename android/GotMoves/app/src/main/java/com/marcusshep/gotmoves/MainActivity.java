@@ -3,6 +3,7 @@ package com.marcusshep.gotmoves;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -23,14 +24,15 @@ public class MainActivity extends AppCompatActivity {
         String date_created;
         String description;
         String name;
+        int pk;
     }
 
+    public String index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("FOOOO", this.load_json());
         ArrayList<Category> categories = this.categories();
         int cate_length = categories.size();
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
@@ -39,9 +41,18 @@ public class MainActivity extends AppCompatActivity {
         for(Category c : categories){
             category_btns[i] = new Button(this);
             category_btns[i].setText(c.name);
+            final Category cate = c;
+            category_btns[i].setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Log.d("CLICKED: ", Integer.toString(cate.pk));
+                    MoveList.start(v.getContext(), Integer.toString(cate.pk));
+                }
+            });
             layout.addView(category_btns[i]);
             i++;
         }
+
     }
 
     public String load_json(){

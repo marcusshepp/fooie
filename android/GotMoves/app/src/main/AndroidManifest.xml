@@ -16,11 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".VideoView" />
-        <activity
-            android:name=".Favorites"
-            android:label="@string/title_activity_favorites"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <uses-permission android:name="android.permission.INTERNET" />
+
+        <activity android:name=".MoveList"></activity>
     </application>
 
 </manifest>
