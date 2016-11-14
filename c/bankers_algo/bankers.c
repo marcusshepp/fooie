@@ -16,10 +16,93 @@ int *allocations_matrix;
 int *maximum_matrix;
 int *resource_availability;
 int *request_matrix;
-const char request_met_message[100] = "Request has been met.";
-const char request_denied_message[100] = "Request has been denied.";
+const char request_met_message[100] = "***Request has been GRANTED.***\n";
+const char request_denied_message[100] = "***Request has been DENIED.***\n";
+const char all_processes_exhausted_message[100] = "\n\n*** All processes have been exhausted and finished\n";
+int requests_granted;
 
+/* print functions */
+void print_line_seperator(){
+    int i;
+    for(i = 0; i <= 45; i++)
+        printf("-");
+    puts("\n");
+}
 
+void print_availability_array(){
+    int resource;
+    puts("Resource availability: ");
+    for(resource = 0; resource < number_of_resources; resource++){
+        printf("\tR%d: ", (resource + 1));
+        printf("%d", resource_availability[resource]);
+    }
+    printf("\n");   
+}
+
+void print_request_matrix(){
+    int resource, process;
+    puts("Request Matrix");
+    puts("\tR1\tR2\tR3");
+    for(process = 0; process < number_of_processes; process++){
+        printf("P%d", (process + 1));
+        for(resource = 0; resource < number_of_resources; resource++){
+            int value = *(request_matrix + process * number_of_resources + resource);
+            printf("\t%d", value);
+        }
+        printf("\n");
+    }
+}
+
+void print_request_array(int process, int request_array[number_of_resources]){
+    int resource;
+    puts("***REQUEST");
+    printf("Process %d requesting the following amounts.\n", (process + 1));
+    for(resource = 0; resource < number_of_resources; resource++){
+        printf("\tR%d: ", (resource + 1));
+        printf("%d", request_array[resource]);
+    }
+    printf("\n");
+}
+
+void print_allocations_matrix(){
+    int resource, process;
+    puts("Allocations Matrix");
+    puts("\tR1\tR2\tR3");
+    for(process = 0; process < number_of_processes; process++){
+        printf("P%d", (process + 1));
+        for(resource = 0; resource < number_of_resources; resource++){
+            int value = *(allocations_matrix + process * number_of_resources + resource);
+            printf("\t%d", value);
+        }
+        printf("\n");
+    }
+}
+
+void print_maximum_matrix(){
+    int resource, process;
+    puts("Maximum Matrix");
+    puts("\tR1\tR2\tR3");
+    for(process = 0; process < number_of_processes; process++){
+        printf("P%d", (process + 1));
+        for(resource = 0; resource < number_of_resources; resource++){
+            int value = *(maximum_matrix + process * number_of_resources + resource);
+            printf("\t%d", value);
+        }
+        printf("\n");
+    }
+}
+
+void print_resource_availability(){
+    int resource;
+    puts("Resource Availability");
+    for(resource = 0; resource < number_of_resources; resource++){
+        printf("\tR%d: ", (resource + 1));
+        printf("%d", resource_availability[resource]);
+    }
+    printf("\n");
+}
+
+/* Handle input file */
 int get_data_from_input_file(){
     FILE* file = fopen("input.txt", "r");;
     int line_limit = 1000;
@@ -108,11 +191,19 @@ int all_requests_met(){
 	return all_met;
 }
 
+int max_needed(int process, int resource){
+    return *(maximum_matrix + process * number_of_resources + resource);
+}
+
+int whats_allocated(int process, int resource){
+    return *(allocations_matrix + process * number_of_resources + resource);
+}
+
 void add_to_allocation_matrix(int process, int request[number_of_resources]){
-	for(int r = 0; r < number_of_resources; r++){
-		int current_value = *(allocations_matrix + process * number_of_resources + r);
-		int new_value = current_value + request[r];
-		*(allocations_matrix + process * number_of_resources + r) = new_value;
+	for(int resource = 0; resource < number_of_resources; resource++){
+		int current_value = whats_allocated(process, resource);
+		int new_value = current_value + request[resource];
+		*(allocations_matrix + process * number_of_resources + resource) = new_value;
 	}
 }
 
@@ -123,10 +214,8 @@ int process_is_finished(int process){
 	 * */
 	int resource;
 	for(resource = 0; resource < number_of_resources; resource++){
-		int amount_allocated = *(
-				allocations_matrix + process * number_of_resources + resource);	
-		int maximum_needed = *(
-				maximum_matrix + process * number_of_resources + resource);
+		int amount_allocated = whats_allocated(process, resource);
+		int maximum_needed = max_needed(process, resource);
 		if(amount_allocated < maximum_needed){
 			return 0;
 		}
@@ -141,40 +230,48 @@ void finish_process(int process){
 		int allocated = *(allocations_matrix + process * number_of_resources + r);
 		resource_availability[r] += allocated;
 	}
+    requests_granted += 1;
+}
+
+void calculate_remaining_need(int process){
+	// reassign what is being requested by this process
+    // by subtracting what was allcated by what the maximum is
+	for(int resource = 0; resource < number_of_resources; resource++){
+        int allocated = whats_allocated(process, resource);
+        int maximum = max_needed(process, resource);
+        int remaining_need = maximum - allocated;
+        // dont let request array have a value less than zero.
+        if(remaining_need < 0){
+            remaining_need = 0;
+        } 
+		*(request_matrix + process * number_of_resources + resource) = remaining_need;
+    }
 }
 
 void meet_request(int process, int request[number_of_resources]){
 	// print message
 	puts(request_met_message);
 
-	// take away from request matrix
-	for(int resource = 0; resource < number_of_resources; resource++)
-		*(request_matrix + process * number_of_resources + resource) -= request[resource];
-
 	// add to allocation matrix
 	add_to_allocation_matrix(process, request);
+    print_allocations_matrix();
+
+    print_maximum_matrix();
+
+    // remake request matrix for this process based on
+    // maximum - allocated
+    calculate_remaining_need(process);
+    print_request_matrix();
 
 	// take away from availability array
 	for(int resource = 0; resource < number_of_resources; resource++)
-		*(request_matrix + process * number_of_resources + resource) -= request[resource];
+        resource_availability[resource] -= request[resource];
+    print_resource_availability();
 
 	if(process_is_finished(process)){
+        printf("Process %d is finished.\n", (process + 1));
 		finish_process(process);
 	}
-}
-
-void copy_availability_array(int *temp_resource_availability){
-	/* Copys whats in the resource availability array
-	 *	into a new space in memory.
-	 *	Used to check if the next request will create an
-	 *	unsafe state without affecting the values in
-	 *	the actual resource availability array.
-	 * */
-	temp_resource_availability = malloc(number_of_resources * sizeof(int));
-	memcpy(
-		temp_resource_availability, 
-		resource_availability, 
-		number_of_resources * sizeof(int));
 }
 
 int is_safe_request(int request[number_of_resources]){
@@ -194,46 +291,39 @@ int is_safe_request(int request[number_of_resources]){
 }
 
 void process_each_request(){
-    /* print each request, print available resources
-     * create temp available
-     * subtract request from temp available
-	 * if all temp avail resouces are >= 0
-     *      print allowed message
-     *      allow request to take from actual available array
-     *      add to allocation
-	 *      take away from request matrix -- this way the request has been made if it <= 0
-     *  else
-     *      print denied request message
-     *
-     * questions:
-     *  what to do after denial of request.
-     *  could keep a var that represents how many requests have been 
-     *  granted and break once var == number of resources
-     *
-     *
+    /*
      * */
     int process, resource = 0;
-	while(!all_requests_met()){
+    int loop = 0;
+    requests_granted = 0;
+    print_request_matrix();
+	while(requests_granted < number_of_processes){
 		for(process = 0; process < number_of_processes; process++){
 			// build request array
 			int request_array[number_of_resources];
 			for(int i = 0; i < number_of_resources; i++){
 				request_array[i] = *(request_matrix + process * number_of_resources + i);
 			}
+            print_request_array(process, request_array);
+            print_availability_array();
 			if(is_safe_request(request_array)){
 				meet_request(process, request_array);
 			} else {
 				puts(request_denied_message);
 			}
 		}
+        loop++;
+        print_line_seperator();
 	}
+    if(all_requests_met()){
+        puts(all_processes_exhausted_message);
+    }
 }
 
 
 int main(){
     get_data_from_input_file();
     process_each_request();
-	all_requests_met();
     free(allocations_matrix);
     free(maximum_matrix);
     free(resource_availability);
