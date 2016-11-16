@@ -27,7 +27,4 @@ public class MoveList extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.title);
         title.setText(category_id);
     }
-
-
-
 }
