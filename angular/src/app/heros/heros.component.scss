@@ -1,0 +1,14 @@
+li {
+  cursor: pointer;
+  padding: 10px;
+  list-style: none;
+  background-color: black;
+  color: white;
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+.selected {
+  background-color: purple;
+  color: black;
+}
