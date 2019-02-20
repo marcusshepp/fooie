@@ -1,0 +1,21 @@
+tree traversal
+recursively and iteratively
+
+recursion
+not used often limited by stack space
+every recusive algo can be converted into an interative
+algo by using stacks and queues
+
+stacks and queues
+given a string of perenthieses check if they are balanced - use a stacks
+
+OOP
+
+hash maps
+time space analysis
+hashing functions
+
+sorting
+bubble sort and merge sort
+
+working with strings

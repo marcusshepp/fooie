@@ -1,0 +1,178 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs22 \cf1 \cb0 \CocoaLigature0 Marcuss-MacBook-Pro-2:process_scheduler marcusshepherd$ gcc -o out sched.c \
+Marcuss-MacBook-Pro-2:process_scheduler marcusshepherd$ ./out\
+1. FCFS (first come first serve)\
+2. SJF (shortest job first)\
+3. RR (round robin)\
+Which algorithm would you like to run?\
+1\
+Choice was: 1\
+pid	arrival time	burst	waiting time	turnaround time	\
+3	0		46	0		0\
+1	2		87	44		131\
+2	7		15	82		97\
+5	13		18	9		27\
+4	15		21	16		37\
+\
+\
+Average Waiting Time: 30.200000\
+Average Turnaround Time: 58.400000\
+Marcuss-MacBook-Pro-2:process_scheduler marcusshepherd$ ./out\
+1. FCFS (first come first serve)\
+2. SJF (shortest job first)\
+3. RR (round robin)\
+Which algorithm would you like to run?\
+2\
+Choice was: 2\
+shortest job first\
+pid	arrival time	burst	waiting time	turnaround time	\
+2	7		15	0		0\
+5	13		18	9		27\
+4	15		21	16		37\
+3	0		46	36		82\
+1	2		87	44		131\
+\
+\
+Average Waiting Time: 21.000000\
+Average Turnaround Time: 55.400000\
+Marcuss-MacBook-Pro-2:process_scheduler marcusshepherd$ ./out\
+1. FCFS (first come first serve)\
+2. SJF (shortest job first)\
+3. RR (round robin)\
+Which algorithm would you like to run?\
+3\
+Choice was: 3\
+\
+round robin\
+Quantum Time: 10\
+\
+PROC 3 IS NOT DONE\
+PROC 3 HAS 46 BURST LEFT.\
+PROC 3 HAS 36 BURST LEFT.\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 87 BURST LEFT.\
+PROC 1 HAS 77 BURST LEFT.\
+\
+PROC 2 IS NOT DONE\
+PROC 2 HAS 15 BURST LEFT.\
+PROC 2 HAS 5 BURST LEFT.\
+\
+PROC 5 IS NOT DONE\
+PROC 5 HAS 18 BURST LEFT.\
+PROC 5 HAS 8 BURST LEFT.\
+\
+PROC 4 IS NOT DONE\
+PROC 4 HAS 21 BURST LEFT.\
+PROC 4 HAS 11 BURST LEFT.\
+\
+PROC 3 IS NOT DONE\
+PROC 3 HAS 36 BURST LEFT.\
+PROC 3 HAS 26 BURST LEFT.\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 77 BURST LEFT.\
+PROC 1 HAS 67 BURST LEFT.\
+\
+PROC 2 IS NOT DONE\
+PROC 2 HAS 5 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 2 HAS -5 BURST LEFT.\
+\
+PROC 5 IS NOT DONE\
+PROC 5 HAS 8 BURST LEFT.\
+PROC 5 IS DONE\
+PROC 5 HAS -2 BURST LEFT.\
+\
+PROC 4 IS NOT DONE\
+PROC 4 HAS 11 BURST LEFT.\
+PROC 4 HAS 1 BURST LEFT.\
+\
+PROC 3 IS NOT DONE\
+PROC 3 HAS 26 BURST LEFT.\
+PROC 3 HAS 16 BURST LEFT.\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 67 BURST LEFT.\
+PROC 1 HAS 57 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+\
+PROC 4 IS NOT DONE\
+PROC 4 HAS 1 BURST LEFT.\
+PROC 4 IS DONE\
+PROC 4 HAS -9 BURST LEFT.\
+\
+PROC 3 IS NOT DONE\
+PROC 3 HAS 16 BURST LEFT.\
+PROC 3 HAS 6 BURST LEFT.\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 57 BURST LEFT.\
+PROC 1 HAS 47 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+PROC 4 IS DONE\
+\
+PROC 3 IS NOT DONE\
+PROC 3 HAS 6 BURST LEFT.\
+PROC 3 IS DONE\
+PROC 3 HAS -4 BURST LEFT.\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 47 BURST LEFT.\
+PROC 1 HAS 37 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+PROC 4 IS DONE\
+PROC 3 IS DONE\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 37 BURST LEFT.\
+PROC 1 HAS 27 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+PROC 4 IS DONE\
+PROC 3 IS DONE\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 27 BURST LEFT.\
+PROC 1 HAS 17 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+PROC 4 IS DONE\
+PROC 3 IS DONE\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 17 BURST LEFT.\
+PROC 1 HAS 7 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+PROC 4 IS DONE\
+PROC 3 IS DONE\
+\
+PROC 1 IS NOT DONE\
+PROC 1 HAS 7 BURST LEFT.\
+PROC 1 IS DONE\
+PROC 1 HAS -3 BURST LEFT.\
+PROC 2 IS DONE\
+PROC 5 IS DONE\
+PROC 4 IS DONE\
+\
+All Processes are done.\
+pid	arrival time	burst	waiting time	turnaround time	\
+3	0		46	0		0\
+1	2		87	44		131\
+2	7		15	82		97\
+5	13		18	9		27\
+4	15		21	16		37\
+\
+\
+Average Waiting Time: 30.200000\
+Average Turnaround Time: 58.400000\
+Marcuss-MacBook-Pro-2:process_scheduler marcusshepherd$ }
