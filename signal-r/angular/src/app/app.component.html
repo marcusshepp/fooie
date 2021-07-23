@@ -1,0 +1,14 @@
+
+
+<div *ngFor="let signal of signalList">
+  <p>{{ signal.message }}</p>
+</div>
+
+
+
+<div class="form" [formGroup]="form">
+  <input type="text" [formControl]="message" />
+  <div class="buttons">
+    <button (click)="send()">Send</button>
+  </div>
+</div>
