@@ -1,0 +1,25 @@
+rabb mq meeting
+
+- system level information logging with ilogger in controller level -- avoid changing tests
+- only log if the logger isn't null, always check if null
+- what is the standard people are using for logging in .net core? -- serilog - indentity server has this implemented
+- don't want to use dependency injection for logging??
+- Log.Debug / Log.Information / Log.Error 
+- make connection, send message, then close connection, for each message.
+- async
+- Elastic Stack, Azure
+
+try
+{
+    var productClass = await staticSalesDataRepository.GetProductClassById(Id);
+    if (productClass == null)
+    {
+        return NotFound($"No Product Class with Id {Id}");
+    }
+    return new ProductClassResponse(productClass);
+}
+catch (Exception e)
+{
+    // log entire exception
+    // send internal server error back to UI, with e
+}
